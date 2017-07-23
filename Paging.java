@@ -10,6 +10,8 @@
  * Student Number: 7745826
  */
 
+import java.util.Stack;
+
 /**
  * Two major data structures have been defined in this class
  * 
@@ -220,12 +222,32 @@ public class Paging {
 	// complete this method
 	// <----------------------------------------------------------------------------
 	public int replacePgLRU(int replacePageNum) {
+	//least recently used page get replaced
+		//each page tagged by page table with time, updated at each reference, LRU is with smallest time
+		int oldPageNum;
+		int freedFrame;
+		int foundLRUPage=0;
+		int minTime=pageTable[0].lastTouchTime;
+		//oldPageNum = addPageBuf(replacePageNum); // replaces virtual page number
+		//freedFrame = pageTable[oldPageNum].frame; //why do i need the frame???
+
+		for(int x = 0; x<pageTable.length;x++){
+			if (pageTable[x].lastTouchTime<minTime){
+			minTime = pageTable[x].lastTouchTime;
+				//remember x???
+				foundLRUPage = x; //or is it the new replacePageNum
+			}
+		}
+		System.out.println("hi");
+		replacePageNum=addPageBuf(foundLRUPage);
 		return (replacePageNum);
 	}
 	
 	// complete this method
 	// <----------------------------------------------------------------------------
 	public int replacePgCLOCK(int replacePageNum) {
+
+
 		return (replacePageNum);
 	}
 	
